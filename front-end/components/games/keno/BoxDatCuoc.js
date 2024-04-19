@@ -220,8 +220,8 @@ const BoxDatCuoc = ({ TYPE_GAME = "keno1p", phien, tinhTrang }) => {
               <Box
                 sx={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(2, minmax(0,1fr))",
-                  gap: "3px",
+                  gridTemplateColumns: "repeat(4, minmax(0,1fr))",
+                  gap: "10px",
                 }}
               >
                 {LOAI_CUOC.map((itemLoaiCuoc) => {
@@ -236,9 +236,8 @@ const BoxDatCuoc = ({ TYPE_GAME = "keno1p", phien, tinhTrang }) => {
                       key={itemLoaiCuoc.tenCuoc}
                       onClick={() => handleChonCuoc({ loaiCuoc: itemLoaiCuoc.loaiCuoc, loaiBi: item })}
                     >
-                      <Typography className={clsx("loai_cuoc ")}>
-                        {itemLoaiCuoc.tenCuoc} x {tiLe && tiLe[`bi_${item}`][itemLoaiCuoc.loaiCuoc]}
-                      </Typography>
+                      <Typography className={clsx("loai_cuoc ")}>{itemLoaiCuoc.tenCuoc}</Typography>
+                      <Typography>x{tiLe && tiLe[`bi_${item}`][itemLoaiCuoc.loaiCuoc]}</Typography>
                     </ItemCuoc>
                   );
                 })}
