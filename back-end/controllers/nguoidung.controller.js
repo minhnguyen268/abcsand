@@ -70,8 +70,8 @@ class NguoiDungController {
     const { taiKhoan, matKhau, nhapLaiMatKhau, soDienThoai, maGioiThieu } = req.body;
 
     const settingData = await Setting.findOne({}).lean();
-    console.log(settingData.maGioiThieu);
-    console.log(maGioiThieu);
+    // console.log(settingData.maGioiThieu);
+    // console.log(maGioiThieu);
     if (settingData.maGioiThieu !== maGioiThieu) {
       throw new BadRequestError("Mã giới thiệu không đúng");
     }
