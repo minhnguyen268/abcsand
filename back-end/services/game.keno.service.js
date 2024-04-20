@@ -298,7 +298,7 @@ class GameKenoService {
     // Tìm lịch sử đặt cược của phiên game
     const lichSuDatCuoc = await this.SETTING_GAME.DATABASE_MODEL.HISTORY.find({
       phien: this.CURRENT_GAME._id,
-      // tinhTrang: STATUS_HISTORY_GAME.DANG_CHO,
+      tinhTrang: STATUS_HISTORY_GAME.DANG_CHO,
     })
       .populate({
         path: "phien",
@@ -307,6 +307,12 @@ class GameKenoService {
         path: "nguoiDung",
       })
       .lean();
+
+    console.log("---------------");
+    console.log("Tra thuong game keno" + this.KEY_GAME.TYPE_GAME);
+    console.log(this.CURRENT_GAME._id);
+    console.log(lichSuDatCuoc);
+    console.log(lichSuDatCuoc.datCuoc);
 
     // Loop từng item lịch sử đặt cược: mỗi item là một người cược khác nhau
 
@@ -341,13 +347,6 @@ class GameKenoService {
                 listKetQuaCuocUpdate[indexItemCuoc] = STATUS_BET_GAME.THUA;
               }
             }
-            /*
-       updateKetQuaCuocQuery = {
-        datCuoc.0.trangThai: "thang",
-        datCuoc.1.trangThai: "thua",
-      }
-*/
-
             // Cập nhật database của item đặt cược
 
             const updateLichSuCuocItem = this.SETTING_GAME.DATABASE_MODEL.HISTORY.findOneAndUpdate(
@@ -401,9 +400,7 @@ class GameKenoService {
             }
 
             await session.commitTransaction();
-            // Cập nhật tiền người chơi real-time
-            // console.log(tongTienThang);
-            // console.log(findUser.taiKhoan);
+
             UserSocketService.updateUserBalance({
               user: findUser.taiKhoan,
               updateBalance: tongTienThang,
