@@ -21,7 +21,7 @@ const ListDeposit = ({ userId = "" }) => {
       id: item._id,
       action: item._id,
       stt: i + 1,
-      taiKhoan: item.nguoiDung.taiKhoan,
+      taiKhoan: item?.nguoiDung?.taiKhoan?  item?.nguoiDung?.taiKhoan : '',
       noiDung: item.noiDung,
       soTien: item.soTien,
       tinhTrang: item.tinhTrang,
