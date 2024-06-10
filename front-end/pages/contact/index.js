@@ -35,7 +35,7 @@ const Home = () => {
         >
           {data && (
             <iframe
-              src={`https://sandspg.ladesk.com/scripts/inline_chat.php?cwid=l6rhqkoc`}
+              src={`https://sandsgp.ladesk.com/scripts/inline_chat.php?cwid=gq90cvxd`}
               frameBorder="0"
               width="100%"
               height="100%"
